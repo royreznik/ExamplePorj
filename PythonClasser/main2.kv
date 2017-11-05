@@ -1,0 +1,65 @@
+#:import Paintor main.DrawInput
+
+ScreenManagement:
+    MainScreen:
+    AnotherScreen:
+    InfoScreen:
+    OptionScreen:
+
+<MainScreen>:
+    name: 'menu'
+    GridLayout:
+        rows: 4
+        Label:
+            text: 'Welcome to number learning :D'
+        Button:
+            on_release: app.root.current = 'main'
+            text: 'start'
+            font_size: 50
+        Button:
+            on_release: app.root.current = 'options'
+            text: 'Options'
+            font_size: 50
+
+        Button:
+            on_release: app.root.current = 'info'
+            text: 'Info'
+            font_size: 50
+
+
+<AnotherScreen>:
+    name: 'main'
+    GridLayout:
+        cols: 2
+        DrawInput:
+            id: drawing
+	    Button:
+		    on_release: root.change_text()
+			color: 0,1,0,1
+			font_size: 25
+			size_hint: 0.3,0.2
+			text: root.random_number
+			pos_hint: {"right":1, "top":1}
+
+		Button:
+		    on_release: root.ids.drawing.cleaner()
+			color: 0,1,0,1
+			font_size: 25
+			size_hint: 0.3,0.2
+			text: "Clear"
+
+<InfoScreen>:
+    name: 'info'
+    GridLayout:
+        rows: 3
+        Label:
+            text: 'This Application made by Roy Reznik.'
+        Label:
+            text: 'It is the backup project for my School Bagrut'
+        Button:
+            text: 'Back to menu screen'
+            on_release: app.root.current =  'menu'
+
+
+<OptionScreen>:
+    name: 'options'
